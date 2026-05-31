@@ -6,5 +6,5 @@ namespace VigihdevWP\Components\Vehicle\Contracts;
 
 interface FromArrayableInterface
 {
-    public function fromArray(array $data): static;
+    public function fromArray(array $data): self;
 }
