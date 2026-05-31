@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VigihdevWP\Components\Vehicle\Contracts;
 
-interface VehiclePriceInterface extends ArrayableInterface
+interface VehiclePriceInterface
 {
     public function getImageUrl(): string;
     public function getBrand(): string;

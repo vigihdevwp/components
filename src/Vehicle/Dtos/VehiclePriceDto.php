@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace VigihdevWP\Components\Vehicle\Dtos;
 
-use VigihdevWP\Components\Vehicle\Contracts\{FromArrayableInterface, VehiclePriceInterface, JsonableInterface};
+use VigihdevWP\Components\Vehicle\Contracts\VehiclePriceInterface;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
-final class VehiclePriceDto implements VehiclePriceInterface, JsonableInterface, FromArrayableInterface
+final class VehiclePriceDto implements VehiclePriceInterface
 {
     public function __construct(
         private readonly string $brand,
@@ -41,32 +41,5 @@ final class VehiclePriceDto implements VehiclePriceInterface, JsonableInterface,
     public function getService(): string
     {
         return $this->service;
-    }
-
-    public function fromArray(array $data): self
-    {
-        return new self(
-            brand: $data['brand'] ?? '',
-            imageUrl: $data['image_url'] ?? '',
-            model: $data['model'] ?? '',
-            price: $data['price'],
-            service: $data['service'] ?? '',
-        );
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'brand' => $this->brand,
-            'image_url' => $this->imageUrl,
-            'model' => $this->model,
-            'price' => $this->price,
-            'service' => $this->service,
-        ];
-    }
-
-    public function toJson(int $flags = 0): string
-    {
-        return json_encode($this->toArray(), $flags);
     }
 }
